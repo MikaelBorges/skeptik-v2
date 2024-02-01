@@ -31,9 +31,7 @@ export function ProductList() {
 
   return (
     <>
-      <p className="text-center text-sm">
-        {totalProducts} produit(s) trouvé(s)
-      </p>
+      <p className="text-sm">{totalProducts} produit(s) trouvé(s)</p>
       {isLoading && <Loader2 className="animate-spin m-auto" />}
       {isError && (
         <p className="text-red-500">
@@ -60,7 +58,6 @@ export function ProductList() {
                 scroll={false}
               />
             </PaginationItem>
-
             {Array.from({ length: totalPages }, (_, index) => {
               if (
                 totalPages <= 4 ||
@@ -90,7 +87,6 @@ export function ProductList() {
                 );
               }
             })}
-
             <PaginationItem>
               <PaginationNext
                 href={{

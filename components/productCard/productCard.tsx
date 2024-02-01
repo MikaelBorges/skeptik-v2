@@ -27,11 +27,10 @@ export function ProductCard({
   className,
   ...props
 }: ProductCardProps) {
-  const { title, price: dirtyPrice, image, category, rating } = product;
-  const price = numeral(dirtyPrice).format("0,0.00");
-  const { rate } = rating;
-  const cleanRate = numeral(rate).format("0,0.00");
-  const [checkedFavorite, setCheckedFavorite] = useState<boolean>(false);
+  const { title, price: rawPrice, image, category, rating } = product;
+  const price = numeral(rawPrice).format("0,0.00");
+  const rate = numeral(rating.rate).format("0,0.00");
+  const [favorite, setFavorite] = useState<boolean>(false);
 
   return (
     <Card
@@ -41,27 +40,27 @@ export function ProductCard({
       <CardImage imageUrl={image} />
       <CardContent className="p-0 w-2/3 flex flex-col justify-between">
         <CardHeader className="p-4 pb-0 flex-row justify-between gap-3 space-y-0">
-          <Badge className="truncate h-fit">{category}</Badge>
-          <Button
+          <Badge className="truncate h-fit inline">{category}</Badge>
+          {/* <Button
             variant="secondary"
             className="rounded-full p-0 h-fit"
-            onClick={() => setCheckedFavorite(!checkedFavorite)}
+            onClick={() => setFavorite(!favorite)}
           >
-            {checkedFavorite ? (
+            {favorite ? (
               <FaHeart className="h-5 w-5 text-red-500" />
             ) : (
               <FaRegHeart className="h-5 w-5 text-red-500" />
             )}
-          </Button>
+          </Button> */}
         </CardHeader>
         <CardTitle className="break-words text-md line-clamp-2 px-4">
           {title}
         </CardTitle>
         <CardFooter className="p-4 pt-0 flex justify-between text-sm">
-          <span className="flex items-center">
-            {cleanRate}
+          {/* <span className="flex items-center">
+            {rate}
             <FaStar className="text-yellow-400 ml-1 inline" />
-          </span>
+          </span> */}
           {`${price} €`}
         </CardFooter>
       </CardContent>
