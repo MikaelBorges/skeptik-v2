@@ -35,24 +35,22 @@ export function ProductCard({
 
   return (
     <Card
-      className={cn("w-full bg-secondary flex overflow-hidden h-36", className)}
+      className={cn("bg-secondary flex overflow-hidden h-36", className)}
       {...props}
     >
       <CardImage imageUrl={image} />
       <CardContent className="p-0 w-2/3 flex flex-col justify-between">
         <CardHeader className="p-4 pb-0 flex-row justify-between gap-3 space-y-0">
-          <Badge className="truncate h-fit" variant="default">
-            {category}
-          </Badge>
+          <Badge className="truncate h-fit">{category}</Badge>
           <Button
             variant="secondary"
-            className="rounded-full px-1.5 h-6"
+            className="rounded-full p-0 h-fit"
             onClick={() => setCheckedFavorite(!checkedFavorite)}
           >
             {checkedFavorite ? (
-              <FaHeart className="h-4 w-4 text-red-500" />
+              <FaHeart className="h-5 w-5 text-red-500" />
             ) : (
-              <FaRegHeart className="h-4 w-4 text-red-500" />
+              <FaRegHeart className="h-5 w-5 text-red-500" />
             )}
           </Button>
         </CardHeader>
@@ -60,7 +58,7 @@ export function ProductCard({
           {title}
         </CardTitle>
         <CardFooter className="p-4 pt-0 flex justify-between text-sm">
-          <span>
+          <span className="flex items-center">
             {cleanRate}
             <FaStar className="text-yellow-400 ml-1 inline" />
           </span>

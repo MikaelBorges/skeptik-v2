@@ -50,7 +50,7 @@ export function Filters() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 rounded-md border w-full p-4 bg-secondary text-right"
+        className="space-y-8 rounded-md border p-4 bg-secondary text-right"
       >
         <TitleFilter control={form.control} />
         <div className="flex space-x-2">

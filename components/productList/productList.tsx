@@ -36,11 +36,11 @@ export function ProductList() {
       </p>
       {isLoading && <Loader2 className="animate-spin m-auto" />}
       {isError && <p className="text-red-500">erreur</p>}
-      <div className="grid gap-3 grid-cols-1">
+      <ul className="grid gap-3 grid-cols-1">
         {visibleProducts?.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
-      </div>
+      </ul>
       {!products && !isLoading && !isError && (
         <p>Aucun produit ne correspond à vos critères</p>
       )}

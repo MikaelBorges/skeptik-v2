@@ -40,7 +40,13 @@ export const getFakeProducts = async (
 
 /*=====================*/
 
-export const getCategories = async (): Promise<string[]> => {
+type Categories =
+  | "electronics"
+  | "jewelery"
+  | "men's clothing"
+  | "women's clothing";
+
+export const getCategories = async (): Promise<Categories[]> => {
   const response = await fetch(`${API_URL}/products/categories`);
   if (!response.ok)
     throw new Error("Erreur lors de la récupération des catégories");
@@ -48,7 +54,7 @@ export const getCategories = async (): Promise<string[]> => {
   return categories;
 };
 
-export const getFakeCategories = async (): Promise<string[]> => {
+export const getFakeCategories = async (): Promise<Categories[]> => {
   await new Promise((resolve) => setTimeout(resolve, 2000));
   return ["electronics", "jewelery", "men's clothing", "women's clothing"];
 };

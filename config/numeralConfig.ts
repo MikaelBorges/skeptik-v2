@@ -1,8 +1,5 @@
-// config/numeralConfig.js
-
 import numeral from "numeral";
 
-// Définir la configuration pour la locale française
 numeral.register("locale", "fr", {
   delimiters: {
     thousands: " ",
@@ -22,5 +19,4 @@ numeral.register("locale", "fr", {
   },
 });
 
-// Utiliser le format français par défaut
 numeral.locale("fr");

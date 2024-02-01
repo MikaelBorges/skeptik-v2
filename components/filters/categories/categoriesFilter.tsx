@@ -10,47 +10,17 @@ import { useGetCategories } from "@/hooks/productsHooks";
 import { CommonFilterProps } from "@/types/filterTypes";
 import { Loader2 } from "lucide-react";
 
-type Categories =
-  | "electronics"
-  | "jewelery"
-  | "men's clothing"
-  | "women's clothing";
-
-type CategoryItem = {
-  id: Categories;
-  label: Capitalize<Categories>;
-};
-
-/* const categories: CategoryItem[] = [
-  {
-    id: "electronics",
-    label: "Electronics",
-  },
-  {
-    id: "jewelery",
-    label: "Jewelery",
-  },
-  {
-    id: "men's clothing",
-    label: "Men's clothing",
-  },
-  {
-    id: "women's clothing",
-    label: "Women's clothing",
-  },
-]; */
-
 export function CategoriesFilter({ control }: CommonFilterProps) {
-  const { data: categoriesData, isLoading } = useGetCategories();
+  const { data, isLoading } = useGetCategories();
 
-  const categories = categoriesData?.map((category) => ({
+  const categories = data?.map((category) => ({
     id: category,
     label: category.charAt(0).toUpperCase() + category.slice(1),
   }));
 
   return (
     <>
-      {categoriesData && (
+      {data && (
         <FormField
           control={control}
           name="categories"
