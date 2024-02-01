@@ -66,6 +66,9 @@ export function Filters() {
         </div>
         <CategoriesFilter control={form.control} />
         <div className="space-x-2">
+          <Button disabled={isLoading} type="submit">
+            Rechercher
+          </Button>
           <Button
             disabled={isLoading}
             onClick={(
@@ -79,9 +82,6 @@ export function Filters() {
             }}
           >
             Tout effacer
-          </Button>
-          <Button disabled={isLoading} type="submit">
-            Rechercher
           </Button>
         </div>
       </form>
