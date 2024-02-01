@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import "@/config/numeralConfig";
 import { cn } from "@/lib/utils";
 import { ProductCardType } from "@/types/productTypes";
 import numeral from "numeral";

@@ -41,7 +41,6 @@ export function Filters() {
     const urlSearchParams = new URLSearchParams(
       usefulValues as Record<string, string>
     ).toString();
-    console.log("urlSearchParams", urlSearchParams);
     router.push(`${pathname}${urlSearchParams ? `?${urlSearchParams}` : ""}`, {
       scroll: false,
     });
@@ -69,7 +68,6 @@ export function Filters() {
         <div className="space-x-2">
           <Button
             disabled={isLoading}
-            variant="outline"
             onClick={(
               event: React.MouseEvent<HTMLButtonElement, MouseEvent>
             ) => {
