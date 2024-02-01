@@ -35,7 +35,11 @@ export function ProductList() {
         {totalProducts} produit(s) trouvé(s)
       </p>
       {isLoading && <Loader2 className="animate-spin m-auto" />}
-      {isError && <p className="text-red-500">erreur</p>}
+      {isError && (
+        <p className="text-red-500">
+          Erreur lors de la récupération des produits
+        </p>
+      )}
       <ul className="grid gap-3 grid-cols-1">
         {visibleProducts?.map((product) => (
           <ProductCard key={product.id} product={product} />

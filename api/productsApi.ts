@@ -7,8 +7,6 @@ export const getProducts = async (
   limit: number
 ): Promise<ProductCardType[]> => {
   const response = await fetch(`${API_URL}/products?limit=${limit}`);
-  if (!response.ok)
-    throw new Error("Erreur lors de la récupération des produits");
   const products = await response.json();
   if (params) return filteredProducts(products, params);
   else return products;
@@ -48,8 +46,6 @@ type Categories =
 
 export const getCategories = async (): Promise<Categories[]> => {
   const response = await fetch(`${API_URL}/products/categories`);
-  if (!response.ok)
-    throw new Error("Erreur lors de la récupération des catégories");
   const categories = await response.json();
   return categories;
 };

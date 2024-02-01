@@ -11,7 +11,7 @@ import { CommonFilterProps } from "@/types/filterTypes";
 import { Loader2 } from "lucide-react";
 
 export function CategoriesFilter({ control }: CommonFilterProps) {
-  const { data, isLoading } = useGetCategories();
+  const { data, isLoading, isError } = useGetCategories();
 
   const categories = data?.map((category) => ({
     id: category,
@@ -65,6 +65,11 @@ export function CategoriesFilter({ control }: CommonFilterProps) {
         />
       )}
       {isLoading && <Loader2 className="animate-spin m-auto" />}
+      {isError && (
+        <p className="italic text-sm text-start text-orange-500">
+          Catégories non disponibles mais on peut toujours faire des recherches
+        </p>
+      )}
     </>
   );
 }
