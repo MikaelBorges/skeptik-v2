@@ -45,9 +45,9 @@ export function PricesFilter({
 
   return (
     <div className="space-y-1">
-      <div className="flex space-x-1">
+      <div className="flex gap-2">
         {prices.map(({ name, placeholder }, index) => (
-          <div key={`${name}-${index}`} className="flex flex-col">
+          <div key={`${name}-${index}`} className="flex flex-col gap-2">
             <FormField
               control={control}
               name={name}
