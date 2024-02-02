@@ -7,6 +7,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { CommonFilterProps } from "@/types/filterTypes";
 import { Slider } from "@/components/ui/slider";
+import { useState } from "react";
 
 type Prices = "minPrice" | "maxPrice";
 
@@ -43,6 +44,13 @@ export function PricesFilter({
     else return defaultMinPrice ? 100 - Number(defaultMinPrice) : 100;
   };
 
+  const [min, setMin] = useState<number>(
+    defaultMinPrice ? 100 - Number(defaultMinPrice) : 100
+  );
+  const [max, setMax] = useState<number>(
+    defaultMaxPrice ? Number(defaultMaxPrice) : 100
+  );
+
   return (
     <div className="space-y-1">
       <div className="flex gap-2">
@@ -65,7 +73,7 @@ export function PricesFilter({
                 </FormItem>
               )}
             />
-            <Slider
+            {/* <Slider
               className="p-1 bg-background rounded-md"
               defaultValue={[setDefaultValue(index)]}
               min={index ? 100 : 0}
@@ -78,30 +86,37 @@ export function PricesFilter({
                 )
               }
               inverted={index ? false : true}
-            />
+            /> */}
           </div>
         ))}
       </div>
-      {/* <div className="flex">
+      {/* <div className="flex flex-col">
         <Slider
-          className="p-1 bg-background rounded-md w-1/2"
+          className="p-1 bg-background rounded-md"
           defaultValue={[defaultMinPrice ? 100 - Number(defaultMinPrice) : 100]}
           max={100}
           step={1}
-          onValueChange={(valueArray) =>
-            setValue("minPrice", String(100 - valueArray[0]))
-          }
+          onValueChange={(valueArray) => {
+            setValue("minPrice", String(100 - valueArray[0]));
+            setMin(valueArray[0]);
+          }}
+          value={[min]}
           inverted
         />
         <Slider
-          className="p-1 bg-background rounded-md w-1/2"
-          defaultValue={[defaultMaxPrice ? Number(defaultMaxPrice) : 200]}
-          min={100}
-          max={200}
+          className="p-1 bg-background rounded-md"
+          defaultValue={[defaultMaxPrice ? Number(defaultMaxPrice) : 100]}
+          min={1}
+          max={100}
           step={1}
-          onValueChange={(valueArray) =>
-            setValue("maxPrice", String(valueArray[0]))
-          }
+          onValueChange={(valueArray) => {
+            setValue("maxPrice", String(valueArray[0]));
+            setMax(valueArray[0]);
+            if (max < min) setMin(valueArray[0]);
+            console.log("min", 100 - min);
+            console.log("max", max);
+          }}
+          value={[max]}
         />
       </div> */}
     </div>
