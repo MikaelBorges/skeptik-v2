@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -34,11 +35,15 @@ export function ProductCard({
 
   return (
     <Card
-      className={cn("bg-secondary flex overflow-hidden h-36", className)}
+      className={cn("bg-secondary flex overflow-hidden h-40", className)}
       {...props}
     >
-      <CardImage imageUrl={image} />
-      <CardContent className="p-0 w-2/3 flex flex-col justify-between">
+      {image && <CardImage imageUrl={image} imageAlt={title} />}
+      <CardContent
+        className={`p-0 flex flex-col justify-between ${
+          image ? "w-2/3" : "w-full"
+        }`}
+      >
         <CardHeader className="p-4 pb-0 flex-row justify-between gap-3 space-y-0">
           <Badge className="truncate h-fit inline">{category}</Badge>
           {/* <Button
@@ -53,9 +58,11 @@ export function ProductCard({
             )}
           </Button> */}
         </CardHeader>
+        {/* <CardDescription className="text-xs px-4">Paris</CardDescription> */}
         <CardTitle className="break-words text-md line-clamp-2 px-4">
           {title}
         </CardTitle>
+
         <CardFooter className="p-4 pt-0 flex justify-between text-sm">
           {/* <span className="flex items-center">
             {rate}

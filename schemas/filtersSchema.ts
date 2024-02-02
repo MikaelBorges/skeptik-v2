@@ -4,6 +4,9 @@ export const filtersSchema = z.object({
   title: z.string().max(30, {
     message: "Maximum 30 caractères.",
   }),
+  location: z.string().max(30, {
+    message: "Maximum 30 caractères.",
+  }),
   ratings: z
     .enum(["1", "2", "3", "4", "5"])
     .nullable()

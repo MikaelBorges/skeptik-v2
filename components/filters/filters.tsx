@@ -11,9 +11,10 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { CategoriesFilter } from "./categories/categoriesFilter";
 import { PricesFilter } from "./prices/pricesFilter";
-import { RatingsFilter } from "./ratings/ratingsFilter";
 import { SortFilter } from "./sort/sortFilter";
 import { TitleFilter } from "./title/titleFilter";
+import { LocationFilter } from "./location/locationFilter";
+import { RatingsFilter } from "./ratings/ratingsFilter";
 
 export function Filters() {
   const { isLoading } = useGetProducts();
@@ -26,6 +27,7 @@ export function Filters() {
     resolver: zodResolver(filtersSchema),
     defaultValues: {
       title: params.title ? params.title : "",
+      location: params.location ? params.location : "",
       ratings: params.ratings
         ? (params.ratings as "1" | "2" | "3" | "4" | "5")
         : null,
@@ -52,19 +54,32 @@ export function Filters() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-8 rounded-md border p-4 bg-secondary text-right"
       >
-        <TitleFilter control={form.control} />
-        <div className="flex space-x-2">
-          <div className="flex flex-col justify-between w-7/12">
+        <div className="space-y-1">
+          <TitleFilter control={form.control} />
+          <LocationFilter control={form.control} />
+        </div>
+
+        {/* <div className="flex space-x-2">
+          <div className="flex flex-col justify-center w-7/12">
             <RatingsFilter
               stars={5}
               control={form.control}
               watch={form.watch}
             />
-            <SortFilter control={form.control} />
           </div>
-          <PricesFilter control={form.control} />
-        </div>
+        </div> */}
+
+        <SortFilter control={form.control} />
+
+        <PricesFilter
+          control={form.control}
+          setValue={form.setValue}
+          defaultMinPrice={params.minPrice}
+          defaultMaxPrice={params.maxPrice}
+        />
+
         <CategoriesFilter control={form.control} />
+
         <div className="space-x-2">
           <Button disabled={isLoading} type="submit">
             Rechercher

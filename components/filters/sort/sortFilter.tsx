@@ -38,7 +38,7 @@ export function SortFilter({ control }: CommonFilterProps) {
               key={Date.now()} // TRICK : Pour forcer le reset d'un radio coché
               onValueChange={field.onChange}
               defaultValue={field.value}
-              className="flex flex-col gap-2"
+              className="flex flex-wrap space-y-0 gap-3"
             >
               {sorts.map(({ value, label }, index) => (
                 <FormItem

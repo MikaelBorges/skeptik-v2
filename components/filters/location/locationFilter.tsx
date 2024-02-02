@@ -7,15 +7,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { CommonFilterProps } from "@/types/filterTypes";
 
-export function TitleFilter({ control }: CommonFilterProps) {
+export function LocationFilter({ control }: CommonFilterProps) {
   return (
     <FormField
       control={control}
-      name="title"
+      name="location"
       render={({ field }) => (
-        <FormItem>
+        <FormItem className="w-3/4">
           <FormControl>
-            <Input placeholder="Recherche..." {...field} />
+            <Input placeholder="Ville" {...field} />
           </FormControl>
           <FormMessage />
         </FormItem>
