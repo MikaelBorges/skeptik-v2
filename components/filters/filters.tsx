@@ -95,7 +95,7 @@ export function Filters() {
               form.reset();
             }}
           >
-            Tout effacer
+            Effacer
           </Button>
         </div>
       </form>
