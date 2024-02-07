@@ -14,7 +14,6 @@ import { PricesFilter } from "./prices/pricesFilter";
 import { SortFilter } from "./sort/sortFilter";
 import { TitleFilter } from "./title/titleFilter";
 import { LocationFilter } from "./location/locationFilter";
-import { RatingsFilter } from "./ratings/ratingsFilter";
 
 export function Filters() {
   const { isLoading } = useGetProducts();
